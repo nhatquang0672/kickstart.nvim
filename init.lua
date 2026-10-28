@@ -543,6 +543,22 @@ do
     --   },
     -- },
     -- pickers = {}
+    defaults = {
+      -- rg flags drive live_grep/grep_string; the 1M cap skips minified Salesforce bundles
+      vimgrep_arguments = {
+        'rg', '--color=never', '--no-heading', '--with-filename',
+        '--line-number', '--column', '--smart-case',
+        '--max-filesize=1M',
+        '--glob=!**/{node_modules,dist,build,out,target,coverage,.next,.nuxt,.cache,vendor,__pycache__,staticresources}/**',
+        '--glob=!*.{map,resource,min.js,min.css,png,jpg,jpeg,gif,svg,ico,woff,woff2,ttf,eot,zip,pdf,log}',
+        '--glob=!{package-lock.json,yarn.lock,pnpm-lock.yaml}',
+      },
+      file_ignore_patterns = {
+        'node_modules/', '/dist/', '/build/', '/out/', '/target/', '/coverage/', '%.next/', '%.nuxt/', '%.cache/', '/vendor/', '__pycache__/', 'staticresources/',
+        '%.map$', '%.resource$', '%.min%.js$', '%.min%.css$', '%.log$', '%.DS_Store$',
+        'package%-lock%.json', 'yarn%.lock', 'pnpm%-lock%.yaml', 'graphql%.schema%.json',
+      },
+    },
     extensions = {
       ['ui-select'] = { require('telescope.themes').get_dropdown() },
     },
