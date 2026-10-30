@@ -558,6 +558,13 @@ do
         '%.map$', '%.resource$', '%.min%.js$', '%.min%.css$', '%.log$', '%.DS_Store$',
         'package%-lock%.json', 'yarn%.lock', 'pnpm%-lock%.yaml', 'graphql%.schema%.json',
       },
+      -- match neo-tree's s/S split keys
+      mappings = {
+        n = {
+          s = 'select_vertical',
+          S = 'select_horizontal',
+        },
+      },
     },
     extensions = {
       ['ui-select'] = { require('telescope.themes').get_dropdown() },
